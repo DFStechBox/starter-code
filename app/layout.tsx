@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
-import { headers } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,16 +24,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const session = await auth.api.getSession({
-    headers: await headers()
-})
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navigation session={session} />
+        <Navigation />
         {children}
       </body>
     </html>

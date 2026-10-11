@@ -1,11 +1,8 @@
 "use client";
-import {auth} from "@/lib/auth"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type Session = typeof auth.$Infer.Session;
-
-export default function Navigation({session}: { session: Session | null }) {
+export default function Navigation() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
